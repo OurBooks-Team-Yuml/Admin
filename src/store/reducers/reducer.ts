@@ -15,6 +15,12 @@ const app = produce((
 
             return draft;
 
+        case types.LOGOUT:
+            draft.user = null;
+            draft.token = null;
+
+            return draft;
+
         default:
             return draft;
     }
