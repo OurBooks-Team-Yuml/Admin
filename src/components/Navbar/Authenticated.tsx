@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 
+import LogoutButton from '../Auth0/LogoutButton';
+
 const Authenticated : FC = () => (
     (
         <div id="admin-navbar" className="navbar-menu">
@@ -12,9 +14,7 @@ const Authenticated : FC = () => (
             <div className="navbar-end">
                 <div className="navbar-item">
                     <div className="buttons">
-                        <button className="button is-light" type="button">
-                            Log out
-                        </button>
+                        <LogoutButton />
                     </div>
                 </div>
             </div>
