@@ -4,7 +4,7 @@ import * as types from '../actions/actionTypes';
 
 import initialState, { SystemState } from '../state';
 
-const app = produce((
+const auth = produce((
     draft: Draft<SystemState>,
     action: types.Actions,
 ) => {
@@ -12,12 +12,14 @@ const app = produce((
         case types.LOGIN:
             draft.user = action.user;
             draft.token = action.token;
+            draft.isAuthenticated = true;
 
             return draft;
 
         case types.LOGOUT:
             draft.user = null;
             draft.token = null;
+            draft.isAuthenticated = false;
 
             return draft;
 
@@ -26,4 +28,4 @@ const app = produce((
     }
 }, initialState);
 
-export default app;
+export default auth;

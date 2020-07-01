@@ -1,18 +1,24 @@
 import React, { FC, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { login } from '../store/actions';
+import { RootReducerType } from '../store/root_reducer';
 
 const Home : FC = () => {
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
+
+    const isUserAuthenticated = useSelector<RootReducerType, boolean>(
+        ({ auth }) => auth.isAuthenticated,
+    );
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         (async () => {
             try {
+                // This is only true when user is redirected through auth0.
                 if (isAuthenticated) {
                     const token = await getAccessTokenSilently();
 
@@ -27,6 +33,10 @@ const Home : FC = () => {
     return (
         <div>
             Home
+
+            {isUserAuthenticated && (
+                <div>Authenticated</div>
+            )}
         </div>
     );
 };

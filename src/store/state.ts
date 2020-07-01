@@ -14,11 +14,13 @@ export interface User {
 export interface SystemState {
     user?: User
     token?: string
+    isAuthenticated: boolean
 }
 
 const initialState: SystemState = {
     user: null,
     token: null,
+    isAuthenticated: false,
 };
 
 export default initialState;
