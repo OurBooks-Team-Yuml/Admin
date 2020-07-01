@@ -6,9 +6,15 @@ import initialState, { SystemState } from '../state';
 
 const app = produce((
     draft: Draft<SystemState>,
-    action: types.AppActions,
+    action: types.Actions,
 ) => {
     switch (action.type) {
+        case types.LOGIN:
+            draft.user = action.user;
+            draft.token = action.token;
+
+            return draft;
+
         default:
             return draft;
     }
