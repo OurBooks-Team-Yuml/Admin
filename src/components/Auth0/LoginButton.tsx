@@ -6,7 +6,13 @@ const LoginButton : FC = () => {
 
     return (
         <div>
-            <button onClick={loginWithRedirect} type="button">Log In</button>
+            <button
+                className="button is-light"
+                onClick={loginWithRedirect}
+                type="button"
+            >
+                Log In
+            </button>
         </div>
     );
 };

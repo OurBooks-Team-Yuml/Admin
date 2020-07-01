@@ -17,7 +17,13 @@ const LogoutButton: FC = () => {
     }, [dispatch, logout]);
 
     return (
-        <button onClick={onClick} type="button">Log Out</button>
+        <button
+            className="button is-light"
+            onClick={onClick}
+            type="button"
+        >
+            Log Out
+        </button>
     );
 };
 
