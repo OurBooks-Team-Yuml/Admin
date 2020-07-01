@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 
+import LoginButton from '../Auth0/LoginButton';
+
 const Unauthenticated : FC = () => (
     (
         <div id="admin-navbar" className="navbar-menu">
@@ -15,9 +17,7 @@ const Unauthenticated : FC = () => (
                         <button className="button is-primary" type="button">
                             <strong>Sign up</strong>
                         </button>
-                        <button className="button is-light" type="button">
-                            Log in
-                        </button>
+                        <LoginButton />
                     </div>
                 </div>
             </div>
