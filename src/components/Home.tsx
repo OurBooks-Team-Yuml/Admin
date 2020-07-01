@@ -32,8 +32,6 @@ const Home : FC = () => {
 
     return (
         <div>
-            Home
-
             {isUserAuthenticated && (
                 <div>Authenticated</div>
             )}
