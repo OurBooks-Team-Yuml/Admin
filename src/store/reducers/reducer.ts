@@ -4,7 +4,7 @@ import * as types from '../actions/actionTypes';
 
 import initialState, { SystemState } from '../state';
 
-const auth = produce((
+const app = produce((
     draft: Draft<SystemState>,
     action: types.Actions,
 ) => {
@@ -28,4 +28,4 @@ const auth = produce((
     }
 }, initialState);
 
-export default auth;
+export default app;
