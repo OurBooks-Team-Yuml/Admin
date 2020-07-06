@@ -6,8 +6,8 @@ import { connectRouter } from 'connected-react-router';
 import app from './reducers/reducer';
 
 const createRootReducer = (history: History) => combineReducers({
-    app,
     router: connectRouter(history),
+    app,
 });
 
 export default createRootReducer;
