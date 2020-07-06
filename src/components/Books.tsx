@@ -34,13 +34,13 @@ const Books : FC = () => {
                     </thead>
                     <tbody>
                         {data.books.map((book: Book) => (
-                            <tr>
+                            <tr key={book.id}>
                                 <td><img src={book.imagePath} /></td>
                                 <td>{book.id}</td>
                                 <td>{book.name}</td>
                                 <td>
                                     {book.authorsId.map((author: Author) => (
-                                        <span>
+                                        <span key={author.id}>
                                             {author.fullName}
                                         </span>
                                     ))}

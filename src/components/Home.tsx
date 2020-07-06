@@ -6,8 +6,6 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { login } from '../store/actions';
 import { RootReducerType } from '../store/root_reducer';
 
-import Books from './Books';
-
 const Home : FC = () => {
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
@@ -37,7 +35,6 @@ const Home : FC = () => {
             {isUserAuthenticated && (
                 <div>Authenticated</div>
             )}
-            <Books />
         </div>
     );
 };

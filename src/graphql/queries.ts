@@ -5,6 +5,7 @@ export const GET_ALL_BOOKS = gql`{
         id,
         name,
         authorsId {
+            id,
             fullName
         },
         imagePath,
