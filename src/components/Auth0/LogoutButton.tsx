@@ -13,7 +13,9 @@ const LogoutButton: FC = () => {
     const onClick = React.useCallback(() => {
         dispatch(customLogout());
 
-        logout();
+        logout({
+            returnTo: 'http://localhost:3000',
+        });
     }, [dispatch, logout]);
 
     return (
