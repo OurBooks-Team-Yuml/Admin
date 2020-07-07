@@ -8,10 +8,6 @@ const Authenticated : FC = () => (
     (
         <div id="admin-navbar" className="navbar-menu">
             <div className="navbar-start">
-                <a className="navbar-item" href="/">
-                    Home
-                </a>
-
                 <Link to="/book-list/1" className="navbar-item">
                     Books
                 </Link>
