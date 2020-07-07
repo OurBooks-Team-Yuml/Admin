@@ -36,13 +36,17 @@ const Books : FC<Props> = (props) => {
         }
     }, [dispatch, loading]);
 
-    if (error) {
-        // TODO SHOW ERROR TO USER.
-        console.log(error);
-    }
-
     return (
         <div>
+            <div className="has-text-centered">
+                {error && (
+                    <div className="notification is-danger is-light">
+                        <button className="delete" type="button">x</button>
+                        {error.message}
+                    </div>
+                )}
+            </div>
+
             {(data !== undefined && nextPage !== undefined) && (
                 <div>
                     <table className="table is-stripped is-fullwidth">
