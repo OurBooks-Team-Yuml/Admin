@@ -23,6 +23,14 @@ const app = produce((
 
             return draft;
 
+        case types.SHOW_LOADER:
+            draft.isFetching = true;
+            return draft;
+
+        case types.HIDE_LOADER:
+            draft.isFetching = false;
+            return draft;
+
         default:
             return draft;
     }

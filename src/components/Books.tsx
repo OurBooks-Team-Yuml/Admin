@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { useQuery } from '@apollo/react-hooks';
 
-import { showLoader } from '../store/actions';
+import { showLoader, hideLoader } from '../store/actions';
 import { GET_ALL_BOOKS } from '../graphql/queries';
 import { Author, Book } from '../graphql/schemas';
 
@@ -28,9 +28,13 @@ const Books : FC<Props> = (props) => {
     const { loading, error, data } = useQuery(GET_ALL_BOOKS(page));
     const { data: nextPage } = useQuery(GET_ALL_BOOKS(page + 1));
 
-    if (loading) {
-        dispatch(showLoader);
-    }
+    useEffect(() => {
+        if (loading) {
+            dispatch(showLoader());
+        } else {
+            dispatch(hideLoader());
+        }
+    }, [dispatch, loading]);
 
     if (error) {
         // TODO SHOW ERROR TO USER.

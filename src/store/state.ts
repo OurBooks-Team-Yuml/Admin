@@ -15,12 +15,14 @@ export interface SystemState {
     user?: User
     token?: string
     isAuthenticated: boolean
+    isFetching: boolean
 }
 
 const initialState: SystemState = {
     user: null,
     token: null,
     isAuthenticated: false,
+    isFetching: false,
 };
 
 export default initialState;

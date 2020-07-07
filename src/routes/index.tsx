@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from '../components/Home';
 import Books from '../components/Books';
 
-const routes = (
+const Routes = () => (
     <div>
         <Switch>
             <Route exact path="/" component={Home} />
@@ -13,4 +13,4 @@ const routes = (
     </div>
 );
 
-export default routes;
+export default Routes;

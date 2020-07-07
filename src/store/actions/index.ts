@@ -12,3 +12,7 @@ export function customLogout(): types.LogoutAction {
 export function showLoader(): types.ShowLoader {
     return { type: types.SHOW_LOADER };
 }
+
+export function hideLoader(): types.HideLoader {
+    return { type: types.HIDE_LOADER };
+}
