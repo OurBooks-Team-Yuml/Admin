@@ -19,7 +19,7 @@ export interface Book {
     name?: string
     description?: string
     imagePath?: string
-    authorsId?: Array<Author>
+    authors?: Array<Author>
     isbn?: string
     publishingHouse?: string
     publishedDate?: string

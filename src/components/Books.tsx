@@ -65,7 +65,7 @@ const Books : FC<Props> = (props) => {
                                     <td>{book.id}</td>
                                     <td>{book.name}</td>
                                     <td>
-                                        {book.authorsId.map((author: Author) => (
+                                        {book.authors.map((author: Author) => (
                                             <span key={author.id}>
                                                 {author.fullName}
                                             </span>
