@@ -1,5 +1,4 @@
 import * as types from './actionTypes';
-
 import { User } from '../state';
 
 export function login(user: User, token: string): types.LoginAction {
@@ -8,4 +7,12 @@ export function login(user: User, token: string): types.LoginAction {
 
 export function customLogout(): types.LogoutAction {
     return { type: types.LOGOUT };
+}
+
+export function showLoader(): types.ShowLoader {
+    return { type: types.SHOW_LOADER };
+}
+
+export function hideLoader(): types.HideLoader {
+    return { type: types.HIDE_LOADER };
 }

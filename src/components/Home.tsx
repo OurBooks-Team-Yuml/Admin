@@ -10,7 +10,7 @@ const Home : FC = () => {
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
     const isUserAuthenticated = useSelector<RootReducerType, boolean>(
-        ({ auth }) => auth.isAuthenticated,
+        ({ app }) => app.isAuthenticated,
     );
 
     const dispatch = useDispatch();

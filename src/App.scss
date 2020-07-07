@@ -3,3 +3,32 @@
 @import "./styles/colors.scss";
 
 @import "../node_modules/bulma/bulma.sass";
+
+.disabled {
+    cursor: default;
+    border-color: #dbdbdb;
+    pointer-events: none;
+    color: #7a7a7a;
+    opacity: 0.5;
+    box-shadow: none;
+    background-color: #dbdbdb;
+}
+
+.custom-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($black, 0.5);
+    z-index: 2;
+
+    .loader {
+        display: block;
+        font-size: 15em;
+    }
+}

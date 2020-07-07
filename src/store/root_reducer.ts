@@ -3,11 +3,11 @@ import { History } from 'history';
 
 import { connectRouter } from 'connected-react-router';
 
-import auth from './reducers/reducer';
+import app from './reducers/reducer';
 
 const createRootReducer = (history: History) => combineReducers({
-    auth,
     router: connectRouter(history),
+    app,
 });
 
 export default createRootReducer;

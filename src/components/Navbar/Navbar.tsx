@@ -8,7 +8,7 @@ import Unauthenticated from './Unauthenticated';
 
 const Navbar : FC = () => {
     const isAuthenticated = useSelector<RootReducerType, boolean>(
-        ({ auth }) => auth.isAuthenticated,
+        ({ app }) => app.isAuthenticated,
     );
 
     return (

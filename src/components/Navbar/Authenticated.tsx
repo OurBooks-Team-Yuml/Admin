@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import LogoutButton from '../Auth0/LogoutButton';
 
 const Authenticated : FC = () => (
@@ -9,6 +11,10 @@ const Authenticated : FC = () => (
                 <a className="navbar-item" href="/">
                     Home
                 </a>
+
+                <Link to="/book-list/1" className="navbar-item">
+                    Books
+                </Link>
             </div>
 
             <div className="navbar-end">
