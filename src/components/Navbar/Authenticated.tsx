@@ -12,7 +12,7 @@ const Authenticated : FC = () => (
                     Home
                 </a>
 
-                <Link to="/book-list" className="navbar-item">
+                <Link to="/book-list/1" className="navbar-item">
                     Books
                 </Link>
             </div>
