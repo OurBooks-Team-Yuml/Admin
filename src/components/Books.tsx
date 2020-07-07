@@ -44,7 +44,7 @@ const Books : FC<Props> = (props) => {
                     <table className="table is-stripped is-fullwidth">
                         <thead>
                             <tr>
-                                <th>Test</th>
+                                <th>Image</th>
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Authors</th>
