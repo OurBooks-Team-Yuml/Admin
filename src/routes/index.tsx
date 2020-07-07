@@ -8,7 +8,7 @@ const routes = (
     <div>
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/book-list" component={Books} />
+            <Route exact path="/book-list/:page(\d)" component={Books} />
         </Switch>
     </div>
 );
