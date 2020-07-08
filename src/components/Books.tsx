@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 import { useQuery } from '@apollo/react-hooks';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+
 import { showLoader, hideLoader } from '../store/actions';
 import { GET_ALL_BOOKS } from '../graphql/queries';
 import { Author, Book } from '../graphql/schemas';
@@ -38,6 +41,15 @@ const Books : FC<Props> = (props) => {
 
     return (
         <div>
+            <div className="has-text-right">
+                <Link to="/book/create">
+                    <button type="button" className="button is-primary">
+                        Create new
+                        <FontAwesomeIcon icon={faPlusSquare} className="ml-4" />
+                    </button>
+                </Link>
+            </div>
+
             <div className="has-text-centered">
                 {error && (
                     <div className="notification is-danger is-light">
