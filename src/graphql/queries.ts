@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 
 export const GET_ALL_BOOKS = (page: number = 1) => gql`{
     books(page: ${page}) {

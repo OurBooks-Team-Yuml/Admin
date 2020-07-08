@@ -119,7 +119,7 @@ const BookForm : FC = () => {
 
     return (
         <div>
-            <form className="form" onSubmit={onSubmit}>
+            <form className="form" onSubmit={onSubmit} encType="multipart/form-data">
                 <div className="field">
                     <label className="label" htmlFor="name">Book name</label>
                     <div className="control">
