@@ -11,3 +11,15 @@ export const GET_ALL_BOOKS = (page: number = 1) => gql`{
         imagePath,
     }
 }`;
+
+export const CREATE_BOOK = gql`
+    mutation CreateBook($authors: ID!, $categories: ID!,
+        $description: String!, $imagePath: Upload, $isbn: String, $name: String!,
+        $publishedDate: String, $publishingHouse: String, $relatedBookId: ID) {
+        createBook(authors: $authors, categories: $categories, description: $description,
+            imagePath: $imagePath, isbn: $isbn, name: $name, publishedDate: $publishedDate,
+            publishingHouse: $publishingHouse, relatedBookId: $relatedBookId) {
+            id
+        }
+    }
+`;
