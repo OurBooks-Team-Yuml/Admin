@@ -30,3 +30,10 @@ export const GET_ALL_CATEGORIES = gql`{
         name
     }
 }`;
+
+export const GET_ALL_AUTHORS = gql`{
+    authors {
+        id,
+        fullName
+    }
+}`;
