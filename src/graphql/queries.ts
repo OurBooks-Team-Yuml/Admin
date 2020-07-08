@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 
 export const GET_ALL_BOOKS = (page: number = 1) => gql`{
-    books (page: ${page}) {
+    books(page: ${page}) {
         id,
         name,
         authors {
@@ -13,7 +13,7 @@ export const GET_ALL_BOOKS = (page: number = 1) => gql`{
 }`;
 
 export const CREATE_BOOK = gql`
-    mutation CreateBook($authors: ID!, $categories: ID!,
+    mutation CreateBook($authors: [ID!], $categories: [ID!],
         $description: String!, $imagePath: Upload, $isbn: String, $name: String!,
         $publishedDate: String, $publishingHouse: String, $relatedBookId: ID) {
         createBook(authors: $authors, categories: $categories, description: $description,
@@ -23,3 +23,10 @@ export const CREATE_BOOK = gql`
         }
     }
 `;
+
+export const GET_ALL_CATEGORIES = gql`{
+    categories {
+        id,
+        name
+    }
+}`;
