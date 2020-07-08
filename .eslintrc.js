@@ -25,6 +25,9 @@ module.exports = {
         'jsx-a11y/alt-text': 'off',
         'react/prop-types': 'off',
         'jsx-a11y/label-has-associated-control': 'off',
+        '@typescript-eslint/no-unused-vars': [
+            "error", { "argsIgnorePattern": "^_" },
+        ],
     },
     parserOptions: {
         parser: 'babel-eslint',
