@@ -24,6 +24,7 @@ module.exports = {
         'react/jsx-indent-props': ['error', 4],
         'jsx-a11y/alt-text': 'off',
         'react/prop-types': 'off',
+        'jsx-a11y/label-has-associated-control': 'off',
     },
     parserOptions: {
         parser: 'babel-eslint',

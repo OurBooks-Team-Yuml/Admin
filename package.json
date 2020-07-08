@@ -52,6 +52,7 @@
     "@types/auth0": "^2.20.5",
     "apollo-boost": "^0.4.9",
     "bulma": "^0.9.0",
+    "bulma-calendar": "^6.0.8",
     "connected-react-router": "^6.8.0",
     "graphql": "^15.3.0",
     "history": "^4.10.1",
