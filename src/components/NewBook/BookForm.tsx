@@ -92,9 +92,9 @@ const BookForm : FC = () => {
         setAuthors(selectedList);
     }, [setAuthors]);
 
-    const onFileChange = React.useCallback(({ target: { files } }
+    const onFileChange = React.useCallback(({ target: { files: [file] } }
     : ChangeEvent<HTMLInputElement>) => {
-        setImage(files[0]);
+        setImage(file);
     }, [setImage]);
 
     const onSubmit = React.useCallback((event: FormEvent<HTMLFormElement>) => {
