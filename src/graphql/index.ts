@@ -7,7 +7,7 @@ import configureStore from '../store';
 
 const { store } = configureStore();
 
-const uri = 'http://localhost:8001/books/secured/';
+const uri = 'http://localhost:8000/books/secured/';
 const httpLink = createUploadLink({ uri });
 
 const authorizationMiddleware = new ApolloLink((operation, forward) => {
@@ -23,21 +23,7 @@ const authorizationMiddleware = new ApolloLink((operation, forward) => {
     return forward(operation);
 });
 
-/* const formFileDataMiddleware = new ApolloLink((operation, forward) => {
-    console.log(operation);
-    if (operation.variables.imagePath !== null) {
-        operation.setContext({
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        });
-    }
-
-    return forward(operation);
-}); */
-
 const link = authorizationMiddleware.concat(httpLink);
-/* const link = formFileDataMiddleware.concat(authLink); */
 
 const client = new ApolloClient({
     link,
