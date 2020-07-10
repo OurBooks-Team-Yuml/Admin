@@ -2,16 +2,14 @@ import React, {
     ChangeEvent,
     FormEvent,
     FC,
-    useEffect,
     useState,
 } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { Multiselect } from 'multiselect-react-dropdown';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
-
-import bulmaCalendar from 'bulma-calendar';
+import DateField from '../DateField';
+import FileField from '../FileField';
+import TextField from '../TextField';
 
 import { GET_ALL_AUTHORS, GET_ALL_CATEGORIES, CREATE_BOOK } from '../../graphql/queries';
 
@@ -28,33 +26,10 @@ const BookForm : FC = () => {
     const [categories, setCategories] = useState([]);
     const [image, setImage] = useState(null);
 
-    const onDateChange = React.useCallback((date: string) => {
-        setpublishedDate(date);
-    }, [setpublishedDate]);
-
     const [createBook, { error }] = useMutation(CREATE_BOOK);
 
+    // TODO
     console.log(error);
-
-    useEffect(() => {
-        const options = { dateFormat: 'YYYY-MM-DD' };
-        const calendars = bulmaCalendar.attach('[type="date"]', options);
-
-        calendars.forEach((calendar) => {
-            calendar.on('select', (datepicker) => {
-                const date = datepicker.data.date.start;
-
-                const dateTimeFormat = new Intl.DateTimeFormat(
-                    'en', { year: 'numeric', month: '2-digit', day: '2-digit' },
-                );
-
-                const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat
-                    .formatToParts(date);
-
-                onDateChange(`${year}-${month}-${day}`);
-            });
-        });
-    }, [onDateChange]);
 
     const onChangeName = React.useCallback(({ target: { value } }
     : ChangeEvent<HTMLInputElement>) => {
@@ -120,18 +95,11 @@ const BookForm : FC = () => {
     return (
         <div>
             <form className="form" onSubmit={onSubmit} encType="multipart/form-data">
-                <div className="field">
-                    <label className="label" htmlFor="name">Book name</label>
-                    <div className="control">
-                        <input
-                            className="input"
-                            type="text"
-                            id="name"
-                            value={name}
-                            onChange={onChangeName}
-                        />
-                    </div>
-                </div>
+                <TextField
+                    onChange={onChangeName}
+                    stateValue={name}
+                    label="Book name"
+                />
 
                 <div className="field">
                     <label className="label" htmlFor="description">Book description</label>
@@ -145,42 +113,22 @@ const BookForm : FC = () => {
                     </div>
                 </div>
 
-                <div className="field">
-                    <label className="label" htmlFor="isbn">ISBN</label>
-                    <div className="control">
-                        <input
-                            className="input"
-                            type="text"
-                            id="isbn"
-                            value={isbn}
-                            onChange={onChangeIsbn}
-                        />
-                    </div>
-                </div>
+                <TextField
+                    onChange={onChangeIsbn}
+                    stateValue={isbn}
+                    label="ISBN"
+                />
 
-                <div className="field">
-                    <label className="label" htmlFor="house">Publishing house</label>
-                    <div className="control">
-                        <input
-                            className="input"
-                            type="text"
-                            id="house"
-                            value={publishingHouse}
-                            onChange={onChangeHouse}
-                        />
-                    </div>
-                </div>
+                <TextField
+                    onChange={onChangeHouse}
+                    stateValue={publishingHouse}
+                    label="Publishing house"
+                />
 
-                <div className="field">
-                    <label className="label" htmlFor="date">Published date</label>
-                    <div className="control">
-                        <input
-                            className="input"
-                            type="date"
-                            id="date"
-                        />
-                    </div>
-                </div>
+                <DateField
+                    label="Published date"
+                    setDate={setpublishedDate}
+                />
 
                 <div className="field">
                     <div className="control">
@@ -216,24 +164,10 @@ const BookForm : FC = () => {
                     </div>
                 </div>
 
-                <div className="file">
-                    <label className="file-label">
-                        <input
-                            className="file-input"
-                            type="file"
-                            name="resume"
-                            onChange={onFileChange}
-                        />
-                        <span className="file-cta">
-                            <span className="file-icon">
-                                <FontAwesomeIcon icon={faUpload} />
-                            </span>
-                            <span className="file-label">
-                                Choose a file…
-                            </span>
-                        </span>
-                    </label>
-                </div>
+                <FileField
+                    onChange={onFileChange}
+                    label="Choose a file…"
+                />
 
                 <input type="submit" className="button is-primary" value="Add new book" />
             </form>

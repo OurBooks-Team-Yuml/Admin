@@ -7,7 +7,7 @@ import configureStore from '../store';
 
 const { store } = configureStore();
 
-const uri = 'http://localhost:8000/books/secured/';
+const uri = 'http://localhost:8001/books/secured/';
 const httpLink = createUploadLink({ uri });
 
 const authorizationMiddleware = new ApolloLink((operation, forward) => {
