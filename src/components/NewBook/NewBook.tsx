@@ -2,10 +2,8 @@ import React, { FC } from 'react';
 
 import BookForm from './BookForm';
 
-const NewBook : FC = () => {
-    console.log('xd');
-
-    return (
+const NewBook : FC = () => (
+    (
         <div className="has-text-centered">
             <div className="title">
                 Add new book
@@ -13,7 +11,7 @@ const NewBook : FC = () => {
 
             <BookForm />
         </div>
-    );
-};
+    )
+);
 
 export default NewBook;
