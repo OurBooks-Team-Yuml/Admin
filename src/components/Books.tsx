@@ -73,7 +73,7 @@ const Books : FC<Props> = (props) => {
                         <tbody>
                             {data.books.map((book: Book) => (
                                 <tr key={book.id}>
-                                    <td><img src={book.imagePath} /></td>
+                                    <td><img src={book.imagePath} className="logo-image" /></td>
                                     <td>{book.id}</td>
                                     <td>{book.name}</td>
                                     <td>
