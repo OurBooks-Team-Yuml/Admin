@@ -19,7 +19,13 @@ export const CREATE_BOOK = gql`
         createBook(authors: $authors, categories: $categories, description: $description,
             imagePath: $imagePath, isbn: $isbn, name: $name, publishedDate: $publishedDate,
             publishingHouse: $publishingHouse, relatedBookId: $relatedBookId) {
-            id
+            id,
+            name,
+            authors {
+                id,
+                fullName
+            },
+            imagePath,
         }
     }
 `;

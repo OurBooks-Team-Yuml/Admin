@@ -11,7 +11,12 @@ import DateField from '../DateField';
 import FileField from '../FileField';
 import TextField from '../TextField';
 
-import { GET_ALL_AUTHORS, GET_ALL_CATEGORIES, CREATE_BOOK } from '../../graphql/queries';
+import {
+    GET_ALL_AUTHORS,
+    GET_ALL_CATEGORIES,
+    CREATE_BOOK,
+    GET_ALL_BOOKS,
+} from '../../graphql/queries';
 
 const BookForm : FC = () => {
     const { data: categoriesData } = useQuery(GET_ALL_CATEGORIES);
@@ -85,6 +90,15 @@ const BookForm : FC = () => {
                 publishingHouse,
                 authors: authors.map((author) => parseInt(author.id, 10)),
                 categories: categories.map((category) => parseInt(category.id, 10)),
+            },
+            update(proxy, result) {
+                const data: any = proxy.readQuery({
+                    query: GET_ALL_BOOKS(1),
+                });
+
+                data.books.push(result.data.createBook);
+
+                proxy.writeQuery({ query: GET_ALL_BOOKS(1), data: { ...data } });
             },
         });
     }, [
