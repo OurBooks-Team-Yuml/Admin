@@ -1,21 +1,33 @@
-import ApolloClient from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloLink } from 'apollo-link';
+import { createUploadLink } from 'apollo-upload-client';
 
 import configureStore from '../store';
 
 const { store } = configureStore();
 
-const client = new ApolloClient({
-    uri: 'http://localhost:8000/books/secured/',
-    request: (operation) => {
-        const state = store.getState();
-        const { token } = state.app;
+const uri = 'http://localhost:8001/books/secured/';
+const httpLink = createUploadLink({ uri });
 
-        operation.setContext({
-            headers: {
-                authorization: token ? `Bearer ${token}` : '',
-            },
-        });
-    },
+const authorizationMiddleware = new ApolloLink((operation, forward) => {
+    const state = store.getState();
+    const { token } = state.app;
+
+    operation.setContext({
+        headers: {
+            authorization: token ? `Bearer ${token}` : '',
+        },
+    });
+
+    return forward(operation);
+});
+
+const link = authorizationMiddleware.concat(httpLink);
+
+const client = new ApolloClient({
+    link,
+    cache: new InMemoryCache(),
 });
 
 export default client;

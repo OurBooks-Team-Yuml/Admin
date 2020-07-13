@@ -6,7 +6,9 @@ networks:
 
 services:
     books-admin-client:
-        image: node:12
+        build:
+            context: ../..
+            dockerfile: docker/development/Dockerfile
         networks:
             - books
         volumes:
